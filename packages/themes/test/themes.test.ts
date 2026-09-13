@@ -18,8 +18,8 @@ describe('@kolektiv/themes tokens', () => {
       'catppuccin-frappe',
       'catppuccin-macchiato',
       'catppuccin-mocha',
-      'kolektivcomputer-lig',
-      'kolektivcomputer-dark',
+      'kolektiv-light',
+      'kolektiv-dark',
     ]);
   });
 
@@ -43,10 +43,19 @@ describe('@kolektiv/themes tokens', () => {
   it('maps each theme to its Shiki analog', () => {
     expect(shikiThemeFor('nord')).toBe('nord');
     expect(shikiThemeFor('catppuccin-mocha')).toBe('catppuccin-mocha');
-    expect(shikiThemeFor('kolektivcomputer-dark')).toBe('kolektiv-dark');
-    expect(shikiThemeFor('kolektivcomputer-lig')).toBe('kolektiv-light');
+    expect(shikiThemeFor('kolektiv-dark')).toBe('kolektiv-dark');
+    expect(shikiThemeFor('kolektiv-light')).toBe('kolektiv-light');
     expect(shikiThemeFor('nope', 'light')).toBe('github-light');
     expect(shikiThemeFor('nope', 'dark')).toBe('github-dark');
+  });
+
+  it('keeps legacy Kolektiv ids working via aliases', () => {
+    const dark = getTheme('kolektiv-dark');
+    expect(dark?.aliases).toContain('kolektivcomputer-dark');
+    const css = allThemeCss();
+    expect(css).toContain("[data-theme='kolektiv-dark']");
+    expect(css).toContain("[data-theme='kolektivcomputer-dark']");
+    expect(css).toContain("[data-theme='kolektivcomputer-lig']");
   });
 
   it('renders daisyUI-compatible colour variables', () => {
@@ -57,7 +66,7 @@ describe('@kolektiv/themes tokens', () => {
     expect(css).toContain('color-scheme: light');
     expect(css).toContain('--color-base-100: oklch(95.127% 0.007 260.731)');
     expect(css).not.toContain('--radius');
-    expect(allThemeCss()).toContain("[data-theme='kolektivcomputer-dark']");
+    expect(allThemeCss()).toContain("[data-theme='kolektiv-dark']");
   });
 
   it('ships Kolektiv Shiki themes', () => {

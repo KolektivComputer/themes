@@ -9,6 +9,7 @@ export interface Theme {
   label: string;
   scheme: ColorScheme;
   shiki: string;
+  aliases?: readonly string[];
   colors: ThemeColors;
 }
 

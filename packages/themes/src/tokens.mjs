@@ -176,10 +176,11 @@ export const themes = [
     },
   },
   {
-    id: 'kolektivcomputer-lig',
+    id: 'kolektiv-light',
     label: 'Kolektiv Light',
     scheme: 'light',
     shiki: 'kolektiv-light',
+    aliases: ['kolektivcomputer-lig'],
     colors: {
       'base-100': 'oklch(100% 0.038 333.862)',
       'base-200': 'oklch(95% 0.038 333.862)',
@@ -204,10 +205,11 @@ export const themes = [
     },
   },
   {
-    id: 'kolektivcomputer-dark',
+    id: 'kolektiv-dark',
     label: 'Kolektiv Dark',
     scheme: 'dark',
     shiki: 'kolektiv-dark',
+    aliases: ['kolektivcomputer-dark'],
     colors: {
       'base-100': 'oklch(13% 0.038 333.862)',
       'base-200': 'oklch(21% 0.038 333.862)',
@@ -257,11 +259,12 @@ export function shikiThemeFor(id, scheme = 'dark') {
  * @param {Theme} theme
  */
 export function themeCss(theme) {
-  const lines = [
-    `html[data-theme='${theme.id}'],`,
-    `[data-theme='${theme.id}'] {`,
-    `  color-scheme: ${theme.scheme};`,
-  ];
+  const ids = [theme.id, ...(theme.aliases ?? [])];
+  const selectors = ids.flatMap((id) => [
+    `html[data-theme='${id}']`,
+    `[data-theme='${id}']`,
+  ]);
+  const lines = [`${selectors.join(',\n')} {`, `  color-scheme: ${theme.scheme};`];
   for (const key of colorKeys) {
     lines.push(`  --color-${key}: ${theme.colors[key]};`);
   }
