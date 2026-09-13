@@ -1,0 +1,51 @@
+{
+  "name": "@kolektiv/themes",
+  "version": "0.0.1-SNAPSHOT.1",
+  "description": "Colour-only Kolektiv design tokens and generated themes (daisyUI, Shiki, Compose).",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "./dist/theme.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    },
+    "./shiki": {
+      "types": "./dist/shiki.d.mts",
+      "import": "./dist/shiki.mjs"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./tokens.json": "./dist/tokens.json",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "node scripts/build-themes.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "kolektiv",
+    "themes",
+    "daisyui",
+    "shiki",
+    "design-tokens"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KolektivComputer/themes.git",
+    "directory": "packages/themes"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
+  }
+}
