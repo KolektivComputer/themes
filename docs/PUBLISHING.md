@@ -37,3 +37,7 @@ Optional fallback token (only if not using OIDC):
 | `JSR_TOKEN` or `JSR_AUTH_TOKEN` | Org Actions secret (or repo) | Personal access token from jsr.io; either name is read by `publish-jsr.sh` |
 
 No other JSR-specific org **variables** are required for publish. Linking the package to the repo is the main setup.
+
+## Apply workflow (token may lack `workflows` scope)
+
+Copy [workflow-publish.yml.example](./workflow-publish.yml.example) over `.github/workflows/publish.yml` (or paste in the GitHub UI) so tag publishes run Maven + dual npm + JSR. Until then, scripts can be run manually from Actions `workflow_dispatch` only after the workflow file exists on `main`.
