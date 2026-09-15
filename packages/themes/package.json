@@ -1,6 +1,6 @@
 {
   "name": "@kolektiv/themes",
-  "version": "0.0.1-SNAPSHOT.2",
+  "version": "0.0.1-SNAPSHOT.3",
   "description": "Colour-only Kolektiv design tokens and generated themes (daisyUI, Shiki, Compose).",
   "license": "MIT",
   "type": "module",
