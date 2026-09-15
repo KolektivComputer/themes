@@ -18,6 +18,12 @@ variables; each app owns its radii, sizes, borders and density. Palettes: `nord`
 (`light`/`dark` → GitHub light/dark, `nord` → `nord`, catppuccin → catppuccin,
 kolektiv → kolektiv).
 
+## Publishing
+
+See [docs/PUBLISHING.md](./docs/PUBLISHING.md). Maven coordinates: `dev.kolektiv.themes:themes` (Yuri Capital + GitHub Packages). npm: `` `@kolektiv/themes` `` (Yuri `brand-npm` + GitHub Packages). JSR: `` `@kolektiv/themes` `` when linked.
+
+Until the first Maven publish lands, Compose consumers can still use `includeBuild`
+
 ## Using it
 
 ```bash
