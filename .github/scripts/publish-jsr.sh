@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Publish @kolektiv/themes to JSR when OIDC or JSR_TOKEN is configured.
+# Publish @kolektiv/themes to JSR via GitHub Actions OIDC (trusted publishing).
+# Link the package to this repo on jsr.io — no JSR_TOKEN required in CI.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -10,18 +11,13 @@ if [ ! -f jsr.json ]; then
   exit 1
 fi
 
-# Prefer OIDC (id-token: write + package linked on jsr.io). Fallback: JSR_TOKEN / JSR_AUTH_TOKEN.
-if [ -n "${JSR_TOKEN:-}" ]; then
-  export JSR_AUTH_TOKEN="${JSR_TOKEN}"
-fi
+# Sync version from package.json
+node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("package.json","utf8"));const j=JSON.parse(fs.readFileSync("jsr.json","utf8"));j.version=p.version;fs.writeFileSync("jsr.json",JSON.stringify(j,null,2)+"\n");'
 
-if [ -z "${JSR_AUTH_TOKEN:-}" ] && [ -z "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ]; then
-  echo "::warning::No JSR_TOKEN/JSR_AUTH_TOKEN and no Actions OIDC; skipping JSR publish"
+if [ -z "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ]; then
+  echo "::warning::Not running under Actions OIDC; skipping JSR publish (link package on jsr.io for trusted publishing)"
   exit 0
 fi
 
-echo "publishing to JSR (npx jsr publish)"
-npx --yes jsr publish --allow-slow-types || {
-  echo "::warning::jsr publish failed (package may need linking / version bump); not failing the whole release"
-  exit 0
-}
+echo "publishing to JSR via OIDC (npx jsr publish)"
+npx --yes jsr publish --allow-slow-types

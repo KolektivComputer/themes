@@ -3,6 +3,11 @@
   "version": "0.0.1-SNAPSHOT.3",
   "exports": "./dist/index.mjs",
   "publish": {
-    "include": ["dist", "jsr.json", "README.md", "LICENSE"]
+    "include": [
+      "dist",
+      "jsr.json",
+      "README.md",
+      "LICENSE"
+    ]
   }
 }

@@ -51,9 +51,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bash .github/scripts/publish-npm.sh
-      - run: bash .github/scripts/verify-npm-resolution.sh
-      - name: Publish JSR
-        env:
-          JSR_TOKEN: ${{ secrets.JSR_TOKEN }}
-          JSR_AUTH_TOKEN: ${{ secrets.JSR_AUTH_TOKEN }}
+      - name: Verify npm resolution
+        run: bash .github/scripts/verify-npm-resolution.sh
+      - name: Publish JSR (OIDC)
         run: bash .github/scripts/publish-jsr.sh
