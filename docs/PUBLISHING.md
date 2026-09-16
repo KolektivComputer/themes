@@ -1,13 +1,15 @@
 # Publishing (themes)
 
+Org spine: [gradle-conventions](https://github.com/KolektivComputer/gradle-conventions) (`computer.kolektiv.publishing`).
+
 ## Targets
 
 | Ecosystem | Yuri Capital | GitHub Packages | JSR |
 | --- | --- | --- | --- |
-| Maven (`dev.kolektiv.themes:themes`) | `maven-releases` / `maven-snapshots` | `maven.pkg.github.com/KolektivComputer/themes` | — |
+| Maven (`computer.kolektiv.themes:themes`) | `maven-releases` / `maven-snapshots` | `maven.pkg.github.com/KolektivComputer/themes` | — |
 | TypeScript / npm (`` `@kolektiv/themes` ``) | `brand-npm` | `npm.pkg.github.com` | `` `@kolektiv/themes` `` via OIDC |
 
-GroupId note: Compose module uses `dev.kolektiv.themes` to match current PR coordinates; org epic prefers `computer.kolektiv.*` — migrate in a follow-up.
+GroupId: Compose / Maven use `computer.kolektiv.themes` (org family `computer.kolektiv.*`). npm/JSR stay `@kolektiv/themes`.
 
 ## Workflows
 

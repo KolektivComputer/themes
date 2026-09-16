@@ -9,7 +9,7 @@ targets from one source:
 | `@kolektiv/themes/theme.css` | daisyUI-compatible `[data-theme]` colour variables |
 | `@kolektiv/themes/shiki` | Shiki theme registrations (Kolektiv light/dark) |
 | `@kolektiv/themes/tokens.json` | raw tokens for Compose / other platforms |
-| `dev.kolektiv.themes:themes` | Compose Multiplatform `DaisyColors` + `KolektivTheme` |
+| `computer.kolektiv.themes:themes` | Compose Multiplatform `DaisyColors` + `KolektivTheme` |
 
 **Colour-only by design.** A theme declares `color-scheme` and the twenty daisyUI colour
 variables; each app owns its radii, sizes, borders and density. Palettes: `nord`,
@@ -20,7 +20,7 @@ kolektiv → kolektiv).
 
 ## Publishing
 
-See [docs/PUBLISHING.md](./docs/PUBLISHING.md). Maven coordinates: `dev.kolektiv.themes:themes` (Yuri Capital + GitHub Packages). npm: `` `@kolektiv/themes` `` (Yuri `brand-npm` + GitHub Packages). JSR: `` `@kolektiv/themes` `` when linked.
+See [docs/PUBLISHING.md](./docs/PUBLISHING.md). Maven coordinates: `computer.kolektiv.themes:themes` (Yuri Capital + GitHub Packages). npm: `` `@kolektiv/themes` `` (Yuri `brand-npm` + GitHub Packages). JSR: `` `@kolektiv/themes` `` when linked.
 
 Until the first Maven publish lands, Compose consumers can still use `includeBuild`
 
@@ -49,10 +49,10 @@ Set `<html data-theme="catppuccin-mocha">` (etc.) and every daisyUI component fo
 
 ## Compose
 
-Colour-only palettes as `dev.kolektiv.themes:themes` (version `0.0.1-SNAPSHOT.3`):
+Colour-only palettes as `computer.kolektiv.themes:themes` (version `0.0.1-SNAPSHOT.3`):
 
 ```kotlin
-implementation("dev.kolektiv.themes:themes:0.0.1-SNAPSHOT.3")
+implementation("computer.kolektiv.themes:themes:0.0.1-SNAPSHOT.3")
 
 KolektivTheme(KolektivThemes.kolektivDark) {
     val colors = KolektivTheme.colors
@@ -65,7 +65,7 @@ Until Maven is published to `repo.yuri.capital`, consume via `includeBuild`:
 // settings.gradle.kts
 includeBuild("../themes") {
     dependencySubstitution {
-        substitute(module("dev.kolektiv.themes:themes"))
+        substitute(module("computer.kolektiv.themes:themes"))
             .using(project(":themes"))
     }
 }

@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Compose Multiplatform module (`dev.kolektiv.themes:themes`) with `DaisyColors`,
+- Compose Multiplatform module (`computer.kolektiv.themes:themes`) with `DaisyColors`,
   `KolektivTheme`, and the seven palettes generated from `tokens.json`.
 - Gradle wrapper so Kalendee / Blawk can `includeBuild` this repo.
 
