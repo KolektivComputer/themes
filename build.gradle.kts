@@ -5,6 +5,6 @@ plugins {
 }
 
 allprojects {
-    group = "dev.kolektiv.themes"
+    group = "computer.kolektiv.themes"
     version = "0.0.1-SNAPSHOT.3"
 }
