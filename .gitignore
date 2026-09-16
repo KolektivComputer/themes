@@ -1,4 +1,13 @@
-node_modules/
-dist/
+*.iml
 *.log
+*.tgz
 .DS_Store
+.gradle/
+.idea/
+.kotlin/
+build/
+dist/
+kotlin-js-store/
+local.properties
+node_modules/
+out/
